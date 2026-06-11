@@ -1,4 +1,13 @@
 
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+
+    # Rewrite all requests to the Laravel public folder when the request is not already in /public
+    RewriteCond %{REQUEST_URI} !^/public/
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteRule ^(.*)$ /public/$1 [L]
+</IfModule>
 
 # BEGIN cPanel-generated php ini directives, do not edit
 # Manual editing of this file may result in unexpected behavior.
